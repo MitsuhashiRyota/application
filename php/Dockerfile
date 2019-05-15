@@ -1,6 +1,10 @@
 ### Docker Image File Setting ###
 FROM php:7.2-fpm
 
+### Permission Settig ###
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_NO_INTERACTION 1
+
 ### Install Composer Setting ###
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 RUN apt-get update \
@@ -16,4 +20,4 @@ RUN apt-get update \
     && docker-php-ext-install pdo_mysql pdo_pgsql
 
 ## Work Directory Setting ##
-WORKDIR /var/www/html/spajam
+WORKDIR /var/www/html/laravel
